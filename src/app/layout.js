@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import "./globals.css";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,8 +27,12 @@ export default function RootLayout({ children }) {
         
 
       <body className="min-h-full bg-[#F8FAFC] ">
-        <Navbar></Navbar>
+        <Suspense fallback={null}>
+    <Navbar></Navbar>
+</Suspense>
+      
         {children}
+        <Footer></Footer>
         </body>
     </html>
   );
