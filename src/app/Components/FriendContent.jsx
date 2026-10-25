@@ -44,6 +44,7 @@ const FriendContent = () => {
       </div>
       {/* Friends content section*/}
       <hr className="my-8 text-[#E9E9E9]" />
+       <h2 className="text-xl font-bold text-[#244D3F] mb-4">Your Friends</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
         {data.map((friend) => (
   <Link
