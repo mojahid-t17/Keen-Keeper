@@ -1,11 +1,18 @@
+
 import friends from "@/data/friend.json";
 import {
   HiOutlineArchiveBox,
   HiOutlineBell,
   HiOutlinePencilSquare,
-  HiOutlineTrash
+  HiOutlineTrash,
 } from "react-icons/hi2";
 import QuickCheckIn from "./QuickCheckIn";
+
+export function generateStaticParams() {
+  return friends.map((friend) => ({
+    id: String(friend.id),
+  }));
+}
 
 export default async function FriendDetails({ params }) {
   const { id } = await params;
@@ -49,14 +56,16 @@ export default async function FriendDetails({ params }) {
 
             <div className="mt-1">
               {friend.tags.map((tag) => (
-                <span key={tag} className="badge badge-success badge-xs mr-1">
+                <span
+                  key={tag}
+                  className="badge badge-success badge-xs mr-1"
+                >
                   {tag.toUpperCase()}
                 </span>
               ))}
             </div>
 
             <p className="mt-2 text-xs italic">{friend.bio}</p>
-
             <p className="mt-1 text-[9px]">Preferred: email</p>
             <p className="mt-1 text-[9px]">{friend.email}</p>
           </div>
@@ -79,7 +88,9 @@ export default async function FriendDetails({ params }) {
           {/* Statistics */}
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
             <div className="flex h-28 flex-col items-center justify-center rounded-lg bg-gray-100 p-3 text-center shadow-sm">
-              <p className="text-xl font-bold">{friend.days_since_contact}</p>
+              <p className="text-xl font-bold">
+                {friend.days_since_contact}
+              </p>
               <p className="text-md">Days Since Contact</p>
             </div>
 
@@ -90,15 +101,14 @@ export default async function FriendDetails({ params }) {
 
             <div className="flex h-28 flex-col items-center justify-center rounded-lg bg-gray-100 p-3 text-center shadow-sm">
               <p className="text-sm font-bold text-[#244D3F]">
-                {new Date(`${friend.next_due_date}T00:00:00`).toLocaleDateString(
-                  "en-US",
-                  {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                    timeZone: "UTC",
-                  }
-                )}
+                {new Date(
+                  `${friend.next_due_date}T00:00:00`
+                ).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  timeZone: "UTC",
+                })}
               </p>
               <p className="mt-1 text-md">Next Due</p>
             </div>
@@ -118,7 +128,8 @@ export default async function FriendDetails({ params }) {
             </div>
 
             <p className="mt-2">
-              Connect every: <span className="font-bold">{friend.goal} days</span>
+              Connect every:{" "}
+              <span className="font-bold">{friend.goal} days</span>
             </p>
           </div>
 
