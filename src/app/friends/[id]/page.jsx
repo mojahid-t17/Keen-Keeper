@@ -1,14 +1,11 @@
+import friends from "@/data/friend.json";
 import {
   HiOutlineArchiveBox,
   HiOutlineBell,
-  HiOutlineChatBubbleLeftRight,
   HiOutlinePencilSquare,
-  HiOutlinePhone,
-  HiOutlineTrash,
-  HiOutlineVideoCamera,
+  HiOutlineTrash
 } from "react-icons/hi2";
-
-import friends from "@/data/friend.json";
+import QuickCheckIn from "./QuickCheckIn";
 
 export default async function FriendDetails({ params }) {
   const { id } = await params;
@@ -126,32 +123,7 @@ export default async function FriendDetails({ params }) {
           </div>
 
           {/* Quick Check-In */}
-          <div className="rounded-lg bg-gray-100 p-3 shadow-sm">
-            <h3 className="mb-2 text-xs font-medium">Quick Check-In</h3>
-
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-              <button className="btn h-12 rounded-md border border-base-300 bg-base-200/40 font-normal">
-                <span className="flex flex-col items-center gap-1">
-                  <HiOutlinePhone size={17} />
-                  <span className="text-[10px]">Call</span>
-                </span>
-              </button>
-
-              <button className="btn h-12 rounded-md border border-base-300 bg-base-200/40 font-normal">
-                <span className="flex flex-col items-center gap-1">
-                  <HiOutlineChatBubbleLeftRight size={17} />
-                  <span className="text-[10px]">Text</span>
-                </span>
-              </button>
-
-              <button className="btn h-12 rounded-md border border-base-300 bg-base-200/40 font-normal">
-                <span className="flex flex-col items-center gap-1">
-                  <HiOutlineVideoCamera size={17} />
-                  <span className="text-[10px]">Video</span>
-                </span>
-              </button>
-            </div>
-          </div>
+          <QuickCheckIn friendName={friend.name} />
         </div>
       </div>
     </div>
