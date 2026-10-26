@@ -20,7 +20,7 @@ const Footer = () => {
       
     </p>
     <p>Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
-    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+    <p>Copyright © 2026 - All right reserved</p>
   </aside>
   <nav>
     <div className="grid grid-flow-col gap-4">
